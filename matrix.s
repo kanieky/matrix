@@ -9,10 +9,9 @@ matrix_mul
 
 matrix_mul_start
 	LDR R7, [R1,#4]
-	LDR R8, [R2,#4]
+	LDR R8, [R2]
 	CMP R7, R8
-	BEQ matrix_mul_error
-
+	BNE matrix_mul_error
 	MOV R3, #0
 
 loop_i
