@@ -25,7 +25,7 @@ loop_i
 loop_j
 	LDR R7, [R2,#4]
 	CMP R4, R7
-	BGE loop_i
+	BGE label_i
 	MOV R6, #0
 
 loop_k
@@ -44,12 +44,10 @@ loop_k
 	ADD R9, R9, R4
 	ADD R9, R9, R2
 	LDR R9, [R9,#8]
-	MUL R6, R8, R9
-	ADD R5, #1
-	LDR R9, [R1,#8]
 	;mul and add
 	MUL R10, R9, R8
 	ADD R6, R6, R10
+	ADD R5, #1
 	B loop_k
 
 label_j
@@ -57,8 +55,13 @@ label_j
 	MUL R10, R3, R10
 	ADD R10, R10, R4
 	ADD R10, R10, R0
-	STR [R10,#8], R6
+	STR R6, [R10,#8]
+	ADD R4, #1
 	B loop_j
+
+label_i
+	ADD R3, #1
+	B loop_i
 
 matrix_mul_exit
 	BX		LR
