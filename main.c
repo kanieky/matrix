@@ -15,7 +15,6 @@ extern int matrix_mul(Matrix *results, const Matrix *source1, const Matrix *sour
 int print_matrix(const Matrix* matrix)
 {
 	int i, j;
-	
 	for (i = 0; i < matrix->row; i++)
 	{
 		for (j = 0; j < matrix->column; j++)
