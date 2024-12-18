@@ -11,7 +11,7 @@ matrix_mul_start
 	LDR R7, [R1,#4]
 	LDR R8, [R2,#4]
 	CMP R7, R8
-	BEQ matrix_mul_exit
+	BEQ matrix_mul_error
 
 	MOV R3, #0
 	MOV R4, #0
@@ -68,6 +68,11 @@ label_i
 	ADD R3, #1
 	B loop_i
 
+matrix_mul_error
+	MOV R0, #1
+	BX		LR
+
 matrix_mul_exit
+	MOV R0, #0
 	BX		LR
 	END
