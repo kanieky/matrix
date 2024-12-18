@@ -36,14 +36,17 @@ loop_k
 	LDR R8, [R1,#4]
 	MUL R8, R3, R8
 	ADD R8, R8, R5
-	ADD R8, R8, R1
-	LDR R8, [R8,#8]
+	LDR R10, [R1,#8]
+	MOV R7, #4
+	MUL R8, R8, R7
+	LDR R8, [R10,R8]
 	;resoure2[k][j]
 	LDR R9, [R2,#4]
 	MUL R9, R5, R9
 	ADD R9, R9, R4
-	ADD R9, R9, R2
-	LDR R9, [R9,#8]
+	LDR R10, [R2,#8]
+	MUL R9, R9, R7
+	LDR R9, [R10,R9]
 	;mul and add
 	MUL R10, R9, R8
 	ADD R6, R6, R10
@@ -51,11 +54,13 @@ loop_k
 	B loop_k
 
 label_j
-	LDR R10, [R0,#4]
-	MUL R10, R3, R10
-	ADD R10, R10, R4
-	ADD R10, R10, R0
-	STR R6, [R10,#8]
+	LDR R8, [R0,#4]
+	MUL R8, R3, R8
+	ADD R8, R8, R4
+	LDR R10, [R0,#8]
+	MOV R7, #4
+	MUL R8, R8, R7
+	STR R6, [R10,R8]
 	ADD R4, #1
 	B loop_j
 
