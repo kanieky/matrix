@@ -14,19 +14,19 @@ matrix_mul_start
 	BEQ matrix_mul_error
 
 	MOV R3, #0
-	MOV R4, #0
-	MOV R5, #0
 
 loop_i
 	LDR R7, [R1]
 	CMP R3, R7
 	BGE matrix_mul_exit 
+	MOV R4, #0
 
 loop_j
 	LDR R7, [R2,#4]
 	CMP R4, R7
 	BGE label_i
 	MOV R6, #0
+	MOV R5, #0
 
 loop_k
 	LDR R7, [R1,#4]
